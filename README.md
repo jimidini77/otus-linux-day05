@@ -16,9 +16,12 @@
 
 # **Выполнение**
 
-Создание виртуальной машины
+### Создание виртуальной машины
+В качестве shell provisioner используется внешний bash-скрипт `setup_zfs.sh`
+Выполняется установка пакетов zfs для используемого релиза Centos 7.8
+Используются пакеты для kABI-tracking kmod
 
-## Определение алгоритма с наилучшим сжатием ZFS
+### Определение алгоритма с наилучшим сжатием ZFS
 
 Создание четырёх пулов по 2 диска в режиме RAID1:
 ```
@@ -135,7 +138,7 @@ otus3  compressratio         3.64x                  -
 otus4  compressratio         1.00x                  -
 ```
 
-## Определение настроек пула ZFS
+### Определение настроек пула ZFS
 
 Скачивание архива с экспортированным пулом и распаковка:
 ```
@@ -385,7 +388,7 @@ NAME  PROPERTY  VALUE      SOURCE
 otus  checksum  sha256     local
 ```
 
-## Работа со снапшотами
+### Работа со снапшотами
 
 Скачивание снапшота и восстановление из него:
 ```
@@ -400,13 +403,7 @@ otus  checksum  sha256     local
 [root@zfs ~]# cat /otus/test/task1/file_mess/secret_message
 https://github.com/sindresorhus/awesome
 ```
-
-## **Issues**
-
-При использовании `script` внутри гостевой ОС не весь вывод в консоли попадал в лог-файл. 
-Был использован командлет Powershell `Start-Transcript` хостовой ОС Windows.
-
 # **Результаты**
 
-Полученный в ходе работы `Vagrantfile` и внешний script для shell provisioner `setup_zfs.sh` помещены в публичный репозиторий:
+Полученный в ходе работы `Vagrantfile` и внешний скрипт для shell provisioner `setup_zfs.sh` помещены в публичный репозиторий:
 - **GitHub** - https://github.com/jimidini77/otus-linux-day05
